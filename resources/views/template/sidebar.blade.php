@@ -2,7 +2,7 @@
 <aside class="sidebar-wrapper" data-simplebar="true">
   <div class="sidebar-header">
     <div class="logo-icon">
-      <img src="assets/images/logo-icon.png" class="logo-img" alt="">
+      <img src="{{asset('assets/images/logo-icon.png')}}" class="logo-img" alt="">
     </div>
     <div class="logo-name flex-grow-1">
       <h5 class="mb-0">Maxton</h5>
@@ -34,7 +34,9 @@
             <div class="menu-title">Data Master</div>
           </a>
           <ul>
-            <li><a href="widgets-data.html"><i class="material-icons-outlined">arrow_right</i>Data</a>
+            <li><a href="{{route('departments.index')}}"><i class="material-icons-outlined">arrow_right</i>Departemen</a>
+            </li>
+			<li><a href="widgets-data.html"><i class="material-icons-outlined">arrow_right</i>Data</a>
             </li>
             <li><a href="widgets-static.html"><i class="material-icons-outlined">arrow_right</i>Static</a>
             </li>
@@ -359,6 +361,20 @@
             <div class="menu-title">Support</div>
           </a>
         </li>
+		
+		<!-- Tombol Link Logout -->
+		<li>
+			<a href="{{ route('logout') }}" 
+			   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+			   <div class="parent-icon"><i class="material-icons-outlined">power_settings_new</i>
+            </div>
+				<div class="menu-title">Logout</div>
+			</a>
+		<!-- Form Logout Tersembunyi -->
+			<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+				@csrf
+			</form>
+		</li>
        </ul>
       <!--end navigation-->
   </div>
