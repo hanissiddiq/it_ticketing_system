@@ -38,9 +38,15 @@
             </li>
             <li><a href="{{route('categories.index')}}"><i class="material-icons-outlined">arrow_right</i>Kategori</a>
             </li>
-			<li><a href="widgets-data.html"><i class="material-icons-outlined">arrow_right</i>Data</a>
+			<li><a href="{{route('sub-categories.index')}}"><i class="material-icons-outlined">arrow_right</i>Sub Kategori</a>
             </li>
-            <li><a href="widgets-static.html"><i class="material-icons-outlined">arrow_right</i>Static</a>
+			<li><a href="widgets-data.html"><i class="material-icons-outlined">arrow_right</i>Prioritas</a>
+            </li>
+			<li><a href="widgets-data.html"><i class="material-icons-outlined">arrow_right</i>Aset</a>
+            </li>
+			<li><a href="widgets-data.html"><i class="material-icons-outlined">arrow_right</i>Role</a>
+            </li>
+            <li><a href="widgets-static.html"><i class="material-icons-outlined">arrow_right</i>User</a>
             </li>
           </ul>
         </li>
@@ -85,6 +91,22 @@
             <div class="parent-icon"><i class="material-icons-outlined">inventory_2</i>
             </div>
             <div class="menu-title">Cards</div>
+          </a>
+        </li>
+		
+		<li>
+          <a href="cards.html">
+            <div class="parent-icon"><i class="material-icons-outlined">help_outline</i>
+            </div>
+            <div class="menu-title">Knowledge Base</div>
+          </a>
+        </li>
+		
+		<li>
+          <a href="cards.html">
+            <div class="parent-icon"><i class="material-icons-outlined">description</i>
+            </div>
+            <div class="menu-title">Laporan</div>
           </a>
         </li>
         
@@ -172,6 +194,29 @@
             </li>
           </ul>
         </li>
+		<!-- ============== Ticket ============= -->
+		<li class="menu-label">Ticket</li>
+        <li>
+		<li>
+          <a class="has-arrow" href="javascript:;">
+            <div class="parent-icon"><i class="material-icons-outlined">api</i>
+            </div>
+            <div class="menu-title">Ticket</div>
+          </a>
+          <ul>
+            <li><a href="table-basic-table.html"><i class="material-icons-outlined">arrow_right</i>Buat Ticket</a>
+            </li>
+            <li><a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>My Ticket</a>
+            </li>
+			<li><a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>Ticket Ditugaskan</a>
+            </li>
+			<li><a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>Ticket Eskalasi</a>
+            </li>
+			<li><a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>Close Ticket</a>
+            </li>
+          </ul>
+        </li>
+		
         <li class="menu-label">Forms & Tables</li>
         <li>
           <a class="has-arrow" href="javascript:;">

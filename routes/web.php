@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,6 +25,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('departments', DepartmentController::class);
 
     Route::resource('categories', CategoryController::class);
+	
+	Route::resource('sub-categories', SubCategoryController::class);
 
     Route::resource('priorities', PriorityController::class);
 
