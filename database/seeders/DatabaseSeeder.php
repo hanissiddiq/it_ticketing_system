@@ -7,6 +7,7 @@ use App\Models\Department;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\DepartmentSeeder;
+use Database\Seeders\CategorySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
 
          DepartmentSeeder::class,
+            CategorySeeder::class,
 
         ]);
 

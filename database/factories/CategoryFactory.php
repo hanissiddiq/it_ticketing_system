@@ -18,7 +18,19 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+
+            'code'=>fake()->unique()->lexify('CAT???'),
+
+            'name'=>fake()->word(),
+
+            'icon'=>'fa-folder',
+
+            'color'=>'#0d6efd',
+
+            'description'=>fake()->sentence(),
+
+            'is_active'=>true
+
         ];
     }
 }

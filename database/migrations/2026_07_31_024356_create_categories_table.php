@@ -12,8 +12,29 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
+
             $table->id();
+
+            $table->string('code',20)->unique();
+
+            $table->string('name',100);
+
+            $table->string('icon')->nullable();
+
+            $table->string('color',20)->default('#0d6efd');
+
+            $table->text('description')->nullable();
+
+            $table->boolean('is_active')->default(true);
+
             $table->timestamps();
+
+            $table->softDeletes();
+
+            $table->index('name');
+
+            $table->index('is_active');
+
         });
     }
 

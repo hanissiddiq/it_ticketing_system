@@ -4,9 +4,44 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
     /** @use HasFactory<\Database\Factories\CategoryFactory> */
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+
+        'code',
+
+        'name',
+
+        'icon',
+
+        'color',
+
+        'description',
+
+        'is_active'
+
+    ];
+
+    protected $casts = [
+
+        'is_active'=>'boolean'
+
+    ];
+
+    public function subCategories(): HasMany
+    {
+        return $this->hasMany(SubCategory::class);
+    }
+
+    public function tickets(): HasMany
+    {
+        return $this->hasMany(Ticket::class);
+    }
+    
 }

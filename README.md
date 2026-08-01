@@ -833,9 +833,12 @@ Built with:
 ## Preview Apps
 ![List Departemen](docs/images/d0.JPG)<br>
 ![Create Departemen](docs/images/d1.JPG)<br>
-
+![List Kategori](docs/images/c0.JPG)<br>
+![Create Departemen](docs/images/c1.JPG)<br>
 ## ⭐ Support
 
 Jika project ini digunakan dalam environment development atau production, pastikan konfigurasi `.env`, database, storage permission, dan production asset build telah dikonfigurasi dengan benar.
+
+sumber : https://chatgpt.com/share/6a6dd989-79d8-83ec-9c36-a837a7af12ed
 
 **NovaDesk — Simplify IT Support & Ticket Management.**
