@@ -31,7 +31,7 @@
           <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
             </div>
-            <div class="menu-title">Widgets</div>
+            <div class="menu-title">Data Master</div>
           </a>
           <ul>
             <li><a href="widgets-data.html"><i class="material-icons-outlined">arrow_right</i>Data</a>
@@ -62,6 +62,20 @@
           </ul>
         </li>
         <li class="menu-label">UI Elements</li>
+		<li>
+          <a href="{{ route('departments.index') }}">
+            <div class="parent-icon"><i class="material-icons-outlined">inventory_2</i>
+            </div>
+            <div class="menu-title">Department</div>
+          </a>
+        </li>
+		<li>
+          <a href="cards.html">
+            <div class="parent-icon"><i class="material-icons-outlined">inventory_2</i>
+            </div>
+            <div class="menu-title">Category</div>
+          </a>
+        </li>
         <li>
           <a href="cards.html">
             <div class="parent-icon"><i class="material-icons-outlined">inventory_2</i>
