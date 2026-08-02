@@ -9,6 +9,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\DepartmentSeeder;
 use Database\Seeders\CategorySeeder;
 use Database\Seeders\SubCategorySeeder;
+use Database\Seeders\PrioritySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
          DepartmentSeeder::class,
             CategorySeeder::class,
 			SubCategorySeeder::class,
+			PrioritySeeder::class,
 
         ]);
 

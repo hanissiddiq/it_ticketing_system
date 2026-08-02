@@ -40,7 +40,7 @@
             </li>
 			<li><a href="{{route('sub-categories.index')}}"><i class="material-icons-outlined">arrow_right</i>Sub Kategori</a>
             </li>
-			<li><a href="widgets-data.html"><i class="material-icons-outlined">arrow_right</i>Prioritas</a>
+			<li><a href="{{route('priorities.index')}}"><i class="material-icons-outlined">arrow_right</i>Prioritas</a>
             </li>
 			<li><a href="widgets-data.html"><i class="material-icons-outlined">arrow_right</i>Aset</a>
             </li>
