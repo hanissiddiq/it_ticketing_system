@@ -46,7 +46,7 @@
             </li>
 			<li><a href="widgets-data.html"><i class="material-icons-outlined">arrow_right</i>Role</a>
             </li>
-            <li><a href="widgets-static.html"><i class="material-icons-outlined">arrow_right</i>User</a>
+            <li><a href="{{route('users.index')}}"><i class="material-icons-outlined">arrow_right</i>User</a>
             </li>
           </ul>
         </li>

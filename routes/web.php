@@ -6,6 +6,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\PriorityController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,7 +24,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::resource('departments', DepartmentController::class);
+    Route::resource('departments', DepartmentController::class)->middleware('permission:department.view');
 
     Route::resource('categories', CategoryController::class);
 	
@@ -32,6 +33,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('priorities', PriorityController::class);
 
     Route::resource('tickets', TicketController::class);
+	
+	Route::resource('users', UserController::class);
 
 });
 

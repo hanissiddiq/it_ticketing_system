@@ -10,7 +10,8 @@ use Database\Seeders\DepartmentSeeder;
 use Database\Seeders\CategorySeeder;
 use Database\Seeders\SubCategorySeeder;
 use Database\Seeders\PrioritySeeder;
-
+use Database\Seeders\RolePermissionSeeder;
+use Database\Seeders\UserSeeder;
 class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
@@ -27,6 +28,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
 			SubCategorySeeder::class,
 			PrioritySeeder::class,
+			RolePermissionSeeder::class,
+			UserSeeder::class,
 
         ]);
 

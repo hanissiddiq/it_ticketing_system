@@ -835,6 +835,8 @@ Built with:
 ![Create Departemen](docs/images/d1.JPG)<br>
 ![List Kategori](docs/images/c0.JPG)<br>
 ![Create Departemen](docs/images/c1.JPG)<br>
+![List User](docs/images/u0.JPG)<br>
+![Create User](docs/images/u1.JPG)<br>
 ## ⭐ Support
 
 Jika project ini digunakan dalam environment development atau production, pastikan konfigurasi `.env`, database, storage permission, dan production asset build telah dikonfigurasi dengan benar.
