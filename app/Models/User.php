@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -65,7 +66,23 @@ class User extends Authenticatable
     }
 	
 	public function department()
-{
-    return $this->belongsTo(Department::class);
-}
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function assignedTickets(): HasMany
+    {
+        return $this->hasMany(
+            TicketAssignment::class,
+            'assigned_to'
+        );
+    }
+
+    public function assignedByMe(): HasMany
+    {
+        return $this->hasMany(
+            TicketAssignment::class,
+            'assigned_by'
+        );
+    }
 }

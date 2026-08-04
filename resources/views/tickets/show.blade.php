@@ -357,6 +357,19 @@
                         @endcan
 
                     </div>
+                    <div>
+                        @can('ticket.assignment')
+
+                            <a
+                                href="{{ route('tickets.assignment.create',$ticket) }}"
+                                class="btn btn-primary">
+
+                                Assign Ticket
+
+                            </a>
+
+                            @endcan
+                    </div>
 
                 </div>
 

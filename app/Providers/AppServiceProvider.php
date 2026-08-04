@@ -6,6 +6,9 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\Contracts\TicketRepositoryInterface;
 use App\Repositories\TicketRepository;
 
+use App\Repositories\Contracts\TicketAssignmentRepositoryInterface;
+use App\Repositories\TicketAssignmentRepository;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -15,7 +18,11 @@ class AppServiceProvider extends ServiceProvider
     {
        $this->app->bind(
         TicketRepositoryInterface::class,
-        TicketRepository::class
+        TicketRepository::class,
+    );
+          $this->app->bind(
+        TicketAssignmentRepositoryInterface::class,
+        TicketAssignmentRepository::class
     );
     }
 

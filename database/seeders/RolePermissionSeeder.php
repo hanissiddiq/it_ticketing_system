@@ -48,6 +48,7 @@ class RolePermissionSeeder extends Seeder
             'ticket.update',
             'ticket.delete',
             'ticket.assign',
+            'ticket.assignment',
             'ticket.comment',
             'ticket.close',
             'ticket.escalate',
@@ -116,6 +117,8 @@ class RolePermissionSeeder extends Seeder
             'user.view',
             'user.create',
             'user.update',
+
+            'ticket.assignment',
         ]);
 
         $helpdesk->givePermissionTo([
@@ -126,6 +129,8 @@ class RolePermissionSeeder extends Seeder
             'ticket.assign',
             'ticket.comment',
             'ticket.escalate',
+
+            'ticket.assignment',
         ]);
 
         $support->givePermissionTo([

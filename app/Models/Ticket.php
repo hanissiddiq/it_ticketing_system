@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Ticket extends Model
 {
@@ -103,7 +104,13 @@ class Ticket extends Model
     }
 
     public function updatedBy()
-{
-    return $this->belongsTo(User::class, 'updated_by');
-}
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
+
+    public function assignments(): HasMany
+    {
+        return $this->hasMany(TicketAssignment::class)
+            ->latest('assigned_at');
+    }
 }
