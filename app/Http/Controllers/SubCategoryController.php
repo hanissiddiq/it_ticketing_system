@@ -69,4 +69,17 @@ class SubCategoryController extends Controller
             ->route('sub-categories.index')
             ->with('success', 'Sub Category berhasil dihapus.');
     }
+
+    public function byCategory($categoryId)
+    {
+    $subCategories = SubCategory::where('category_id', $categoryId)
+        ->where('is_active', true)
+        ->orderBy('name')
+        ->get([
+            'id',
+            'name'
+        ]);
+
+    return response()->json($subCategories);
+    }
 }

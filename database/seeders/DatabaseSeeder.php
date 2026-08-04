@@ -12,6 +12,8 @@ use Database\Seeders\SubCategorySeeder;
 use Database\Seeders\PrioritySeeder;
 use Database\Seeders\RolePermissionSeeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\TicketStatusSeeder;
+use Database\Seeders\TicketSeeder;
 class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
@@ -30,6 +32,8 @@ class DatabaseSeeder extends Seeder
 			PrioritySeeder::class,
 			RolePermissionSeeder::class,
 			UserSeeder::class,
+			TicketStatusSeeder::class,
+			TicketSeeder::class
 
         ]);
 

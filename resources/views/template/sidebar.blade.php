@@ -204,7 +204,7 @@
             <div class="menu-title">Ticket</div>
           </a>
           <ul>
-            <li><a href="table-basic-table.html"><i class="material-icons-outlined">arrow_right</i>Buat Ticket</a>
+            <li><a href="{{ route('tickets.index') }}"><i class="material-icons-outlined">arrow_right</i>Buat Ticket</a>
             </li>
             <li><a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>My Ticket</a>
             </li>
