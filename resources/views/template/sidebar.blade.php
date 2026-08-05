@@ -27,13 +27,14 @@
             </li>
           </ul>
         </li>
+        @hasanyrole('Super Admin|Admin')
         <li>
           <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
             </div>
             <div class="menu-title">Data Master</div>
           </a>
-          <ul>
+          <ul> 
             <li><a href="{{route('departments.index')}}"><i class="material-icons-outlined">arrow_right</i>Departemen</a>
             </li>
             <li><a href="{{route('categories.index')}}"><i class="material-icons-outlined">arrow_right</i>Kategori</a>
@@ -50,6 +51,7 @@
             </li>
           </ul>
         </li>
+        @endhasanyrole
         <li>
           <a class="has-arrow" href="javascript:;">
             <div class="parent-icon"><i class="material-icons-outlined">apps</i>
