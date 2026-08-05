@@ -178,10 +178,10 @@
 
 @endsection
 @push('scripts')
-  <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+  {{-- <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script> --}}
 
- <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
-  <script src="{{ asset('assets/plugins/metismenu/metisMenu.min.js') }}"></script>
+ {{-- <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script> --}}
+  {{-- <script src="{{ asset('assets/plugins/metismenu/metisMenu.min.js') }}"></script> --}}
   <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
 
@@ -238,5 +238,5 @@
       });
   </script>
   <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
-  <script src="{{ asset('assets/js/main.js') }}"></script>
+  {{-- <script src="{{ asset('assets/js/main.js') }}"></script> --}}
   @endpush
