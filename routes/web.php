@@ -10,6 +10,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TicketAssignmentController;
 
+use App\Http\Controllers\ITSupport\DashboardController;
+use App\Http\Controllers\ITSupport\MyTicketController;
+use App\Http\Controllers\ITSupport\ProgressController;
+
+use App\Http\Controllers\Helpdesk\DashboardController as HelpdeskDashboardController;
+use App\Http\Controllers\Helpdesk\TicketAssignmentController as HelpdeskTicketAssignmentController;
+use App\Http\Controllers\Helpdesk\TicketController as HelpdeskTicketController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -53,6 +61,65 @@ Route::middleware(['auth'])->group(function () {
         )->name('assignment.store');
 
     });
+
+});
+
+Route::middleware(['auth','role:Helpdesk'])->prefix('helpdesk')->name('helpdesk.')
+->group(function () {
+
+     /*
+        |--------------------------------------------------------------------------
+        | Dashboard
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/dashboard', [HelpdeskDashboardController::class, 'index'])
+            ->name('dashboard');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Ticket
+        |--------------------------------------------------------------------------
+        */
+
+        Route::resource('ticket-assignment', TicketAssignmentController::class)->only(['create', 'store']);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Ticket Assignment
+        |--------------------------------------------------------------------------
+        */
+
+         Route::prefix('tickets/{ticket}')
+            ->name('tickets.')
+            ->group(function () {
+
+                Route::get('/assignment', [HelpdeskTicketAssignmentController::class, 'create'])
+                    ->name('assignment.create');
+                Route::get('/show', [HelpdeskTicketController::class, 'show'])
+                    ->name('show');
+
+                Route::post('/assignment', [HelpdeskTicketAssignmentController::class, 'store'])
+                    ->name('assignment.store');
+
+                Route::get('/assignment/history', [HelpdeskTicketAssignmentController::class, 'history'])
+                    ->name('assignment.history');
+            });
+
+});
+
+Route::middleware(['auth','role:IT Support'])->prefix('itsupport')->name('itsupport.')
+->group(function () {
+
+    Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
+
+    Route::resource('tickets',MyTicketController::class)->only([
+        'index',
+        'show'
+    ]);
+
+    Route::put('tickets/{ticket}/progress',[ProgressController::class, 'update']
+    )->name('tickets.progress');
 
 });
 

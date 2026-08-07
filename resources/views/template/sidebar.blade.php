@@ -111,25 +111,31 @@
             <div class="menu-title">Laporan</div>
           </a>
         </li>
-        
+        {{-- IT Support Ticket --}}
         <li>
           <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>
+            <div class="parent-icon"><i class="material-icons-outlined">description</i>
             </div>
-            <div class="menu-title">eCommerce</div>
+            <div class="menu-title">IT Ticket</div>
           </a>
           <ul>
-            <li><a href="ecommerce-add-product.html"><i class="material-icons-outlined">arrow_right</i>Add Product</a>
+            <li><a href="{{ route('itsupport.dashboard') }}"><i class="material-icons-outlined">arrow_right</i>Dashboard IT Support</a>
             </li>
-            <li><a href="ecommerce-products.html"><i class="material-icons-outlined">arrow_right</i>Products</a>
+            <li><a href="{{ route('itsupport.tickets.index') }}"><i class="material-icons-outlined">arrow_right</i>My Assign Ticket</a>
             </li>
-            <li><a href="ecommerce-customers.html"><i class="material-icons-outlined">arrow_right</i>Customers</a>
+          </ul>     
+        </li>
+        {{-- Helpdesk Ticket --}}
+        <li>
+          <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="material-icons-outlined">description</i>
+            </div>
+            <div class="menu-title">Helpdesk Ticket</div>
+          </a>
+          <ul>
+            <li><a href="{{ route('helpdesk.dashboard') }}"><i class="material-icons-outlined">arrow_right</i>Dashboard Helpdesk</a>
             </li>
-            <li><a href="ecommerce-customer-details.html"><i class="material-icons-outlined">arrow_right</i>Customer Details</a>
-            </li>
-            <li><a href="ecommerce-orders.html"><i class="material-icons-outlined">arrow_right</i>Orders</a>
-            </li>
-            <li><a href="ecommerce-order-details.html"><i class="material-icons-outlined">arrow_right</i>Order Details</a>
+            <li><a href="{{route ('tickets.index') }}"><i class="material-icons-outlined">arrow_right</i>Ticket Helpdesk</a>
             </li>
           </ul>     
         </li>

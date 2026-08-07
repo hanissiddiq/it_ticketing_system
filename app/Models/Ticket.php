@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+
 class Ticket extends Model
 {
     use HasFactory;
@@ -112,5 +113,11 @@ class Ticket extends Model
     {
         return $this->hasMany(TicketAssignment::class)
             ->latest('assigned_at');
+    }
+
+    public function histories(): HasMany
+    {
+    return $this->hasMany(TicketHistory::class)
+        ->latest();
     }
 }

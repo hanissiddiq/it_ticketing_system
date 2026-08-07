@@ -10,7 +10,8 @@ use RuntimeException;
 class TicketAssignmentService
 {
     public function __construct(
-        protected TicketAssignmentRepositoryInterface $repository
+        protected TicketAssignmentRepositoryInterface $repository,
+        protected TicketHistoryService $historyService
     ) {
     }
 
@@ -29,7 +30,11 @@ class TicketAssignmentService
             |--------------------------------------------------------------------------
             */
 
-            $this->validateAssignment($ticket);
+            // $this->validateAssignment($ticket);
+            $this->validateAssignment(
+                $ticket,
+                $data['assigned_to']
+            );
 
             /*
             |--------------------------------------------------------------------------
@@ -50,12 +55,15 @@ class TicketAssignmentService
                 'assigned_at' => now(),
 
             ]);
+            
 
             /*
             |--------------------------------------------------------------------------
             | Update Ticket
             |--------------------------------------------------------------------------
             */
+            $oldAssignedTo = $ticket->assigned_to;
+            $oldStatus = $ticket->status;
 
             $ticket->update([
 
@@ -65,6 +73,54 @@ class TicketAssignmentService
 
             ]);
 
+             /*
+            |--------------------------------------------------------------------------
+            | History Assignment
+            |--------------------------------------------------------------------------
+            */
+
+            $this->historyService->log(
+
+                ticket: $ticket,
+
+                action: 'ASSIGNED',
+
+                field: 'assigned_to',
+
+                oldValue: $oldAssignedTo,
+
+                newValue: $data['assigned_to'],
+
+                description: 'Ticket berhasil di-assign.'
+
+            );
+
+            /*
+            |--------------------------------------------------------------------------
+            | History Status
+            |--------------------------------------------------------------------------
+            */
+
+            if ($oldStatus != 'ASSIGNED') {
+
+                $this->historyService->log(
+
+                    ticket: $ticket,
+
+                    action: 'STATUS_CHANGED',
+
+                    field: 'status',
+
+                    oldValue: $oldStatus,
+
+                    newValue: 'ASSIGNED',
+
+                    description: 'Status ticket berubah menjadi ASSIGNED.'
+
+                );
+
+            }
+
             return $assignment;
         });
     }
@@ -73,7 +129,8 @@ class TicketAssignmentService
      * Validate Assignment Business Rules
      */
     protected function validateAssignment(
-        Ticket $ticket
+        Ticket $ticket,
+        int $assignedTo
     ): void {
 
         /*
@@ -105,8 +162,10 @@ class TicketAssignmentService
         */
 
         if (
-            !empty($ticket->assigned_to)
-            && $ticket->assigned_to == request('assigned_to')
+            // !empty($ticket->assigned_to)
+            // && $ticket->assigned_to == request('assigned_to')
+            $ticket->assigned_to &&
+            $ticket->assigned_to == $assignedTo
         ) {
 
             throw new RuntimeException(
