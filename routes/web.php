@@ -17,6 +17,13 @@ use App\Http\Controllers\ITSupport\ProgressController;
 use App\Http\Controllers\Helpdesk\DashboardController as HelpdeskDashboardController;
 use App\Http\Controllers\Helpdesk\TicketAssignmentController as HelpdeskTicketAssignmentController;
 use App\Http\Controllers\Helpdesk\TicketController as HelpdeskTicketController;
+use App\Http\Controllers\Helpdesk\CommentController as HelpdeskCommentController;
+
+use App\Http\Controllers\Requester\DashboardController as RequesterDashboardController;
+use App\Http\Controllers\Requester\TicketController as RequesterTicketController;
+use App\Http\Controllers\Requester\CommentController as RequesterCommentController;
+
+use App\Http\Controllers\ITSupport\CommentController as ITSupportCommentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -106,6 +113,16 @@ Route::middleware(['auth','role:Helpdesk'])->prefix('helpdesk')->name('helpdesk.
                     ->name('assignment.history');
             });
 
+        Route::get('tickets/{ticket}/attachments/{attachment}',[AttachmentController::class, 'download']
+        )->name('tickets.attachments.download');
+
+        Route::delete('tickets/{ticket}/attachments/{attachment}',[AttachmentController::class, 'destroy']
+        )->name('tickets.attachments.destroy');
+
+        Route::post('/comments',[HelpdeskCommentController::class, 'store'])->name('comments.store');
+
+        Route::delete('/comments/{comment}',[HelpdeskCommentController::class, 'destroy'])->name('comments.destroy');
+
 });
 
 Route::middleware(['auth','role:IT Support'])->prefix('itsupport')->name('itsupport.')
@@ -121,6 +138,43 @@ Route::middleware(['auth','role:IT Support'])->prefix('itsupport')->name('itsupp
     Route::put('tickets/{ticket}/progress',[ProgressController::class, 'update']
     )->name('tickets.progress');
 
+
+    Route::get('tickets/{ticket}/attachments/{attachment}',[AttachmentController::class, 'download'])->name('tickets.attachments.download');
+    Route::delete('tickets/{ticket}/attachments/{attachment}',[AttachmentController::class, 'destroy'])->name('tickets.attachments.destroy');
+
+    // Route::post('/comments',[ITSupportCommentController::class, 'store'])->name('comments.store');
+    // Route::delete('/comments/{comment}',[ITSupportCommentController::class, 'destroy'])->name('comments.destroy');
+    Route::post('tickets/{ticket}/comments',[ITSupportCommentController::class, 'store'])->name('comments.store');
+    Route::delete('tickets/{ticket}/comments/{comment}',[ITSupportCommentController::class, 'destroy'])->name('comments.destroy');
+
 });
+
+
+Route::middleware(['auth','role:User'])->prefix('requester')->name('requester.')
+->group(function () {
+
+    Route::get('/dashboard',[RequesterDashboardController::class,'index'])->name('dashboard');
+
+    Route::resource('tickets', RequesterTicketController::class)
+            ->only([
+                'index',
+                'create',
+                'store',
+                'show'
+            ]);
+
+    Route::put('tickets/{ticket}/close',[RequesterTicketController::class, 'close'])->name('tickets.close');
+
+
+    Route::get('tickets/{ticket}/attachments/{attachment}',[AttachmentController::class, 'download'])->name('tickets.attachments.download');
+    Route::delete('tickets/{ticket}/attachments/{attachment}', [AttachmentController::class, 'destroy'])->name('tickets.attachments.destroy');
+
+    // Route::post('/comments',[RequesterCommentController::class, 'store'])->name('comments.store');
+    // Route::delete('/comments/{comment}',[RequesterCommentController::class, 'destroy'])->name('comments.destroy');
+    Route::post('tickets/{ticket}/comments',[RequesterCommentController::class, 'store'])->name('comments.store');
+    Route::delete('tickets/{ticket}/comments/{comment}',[RequesterCommentController::class, 'destroy'])->name('comments.destroy');
+
+});
+
 
 require __DIR__.'/auth.php';

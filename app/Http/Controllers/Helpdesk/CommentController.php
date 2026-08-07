@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ITSupport;
+namespace App\Http\Controllers\Helpdesk;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentRequest;
@@ -23,25 +23,19 @@ class CommentController extends Controller
         Ticket $ticket
     ) {
 
-        abort_unless(
-            $ticket->assigned_to == auth()->id(),
-            403
-        );
-
         $this->service->create(
-            // $ticket,
-            // [
-            //     'user_id' => auth()->id(),
-            //     'comment' => $request->comment,
-            //     'is_internal' => $request->boolean(
-            //         'is_internal'
-            //     ),
-            // ]
+            $ticket,
+            [
 
-            ticket: $ticket,
-            comment: $request->comment,
-            userId: auth()->id(),
-            internal: $request->boolean('is_internal')
+                'user_id' => auth()->id(),
+
+                'comment' => $request->comment,
+
+                'is_internal' => $request->boolean(
+                    'is_internal'
+                ),
+
+            ]
         );
 
         return back()->with(
@@ -58,11 +52,6 @@ class CommentController extends Controller
         Ticket $ticket,
         TicketComment $comment
     ) {
-
-        abort_unless(
-            $ticket->assigned_to == auth()->id(),
-            403
-        );
 
         abort_unless(
             $comment->ticket_id == $ticket->id,

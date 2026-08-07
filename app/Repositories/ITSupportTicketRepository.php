@@ -52,6 +52,7 @@ class ITSupportTicketRepository implements ITSupportTicketRepositoryInterface
                 'department',
                 'category',
                 'subCategory',
+                'attachments.user','comments.user.roles',
                 'histories.user',
                 // 'assignments.assigner',
                 // 'assignments.assignee'

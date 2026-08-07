@@ -85,4 +85,17 @@ class User extends Authenticatable
             'assigned_by'
         );
     }
+    
+    public function ticketAttachments()
+    {
+        return $this->hasMany(
+            TicketAttachment::class
+        );
+    }
+     public function ticketComments()
+    {
+        return $this->hasMany(
+            TicketComment::class
+        );
+    }
 }

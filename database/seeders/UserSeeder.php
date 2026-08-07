@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
 
             [
 
-                'email'=>'superadmin@helpdesk.test'
+                'email'=>'superadmin@gmail.com'
 
             ],
 
@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
 		// 2. Admin
         $admin = User::updateOrCreate(
             [
-                'email'=>'admin@helpdesk.test'
+                'email'=>'admin@gmail.com'
             ],
             [
                 'employee_id'=>'EMP0002',
@@ -64,7 +64,7 @@ class UserSeeder extends Seeder
         // 3. Helpdesk
         $helpdesk = User::updateOrCreate(
             [
-                'email'=>'helpdesk@helpdesk.test'
+                'email'=>'helpdesk@gmail.com'
             ],
             [
                 'employee_id'=>'EMP0003',
@@ -81,7 +81,7 @@ class UserSeeder extends Seeder
         // 4. IT Support
         $itSupport = User::updateOrCreate(
             [
-                'email'=>'itsupport@helpdesk.test'
+                'email'=>'itsupport@gmail.com'
             ],
             [
                 'employee_id'=>'EMP0004',
@@ -98,7 +98,7 @@ class UserSeeder extends Seeder
         // 5. Supervisor
         $supervisor = User::updateOrCreate(
             [
-                'email'=>'supervisor@helpdesk.test'
+                'email'=>'supervisor@gmail.com'
             ],
             [
                 'employee_id'=>'EMP0005',
@@ -115,7 +115,7 @@ class UserSeeder extends Seeder
         // 6. Manager IT
         $managerIT = User::updateOrCreate(
             [
-                'email'=>'manager.it@helpdesk.test'
+                'email'=>'manager.it@gmail.com'
             ],
             [
                 'employee_id'=>'EMP0006',
@@ -132,7 +132,7 @@ class UserSeeder extends Seeder
         // 7. User
         $user = User::updateOrCreate(
             [
-                'email'=>'user@helpdesk.test'
+                'email'=>'user@gmail.com'
             ],
             [
                 'employee_id'=>'EMP0007',

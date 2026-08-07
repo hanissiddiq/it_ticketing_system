@@ -120,4 +120,18 @@ class Ticket extends Model
     return $this->hasMany(TicketHistory::class)
         ->latest();
     }
+
+    public function attachments()
+{
+    return $this->hasMany(
+        TicketAttachment::class
+    );
+}
+public function comments()
+{
+    return $this->hasMany(
+        TicketComment::class,        
+    );
+}
+
 }

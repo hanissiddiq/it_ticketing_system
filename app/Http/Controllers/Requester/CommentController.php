@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\ITSupport;
+namespace App\Http\Controllers\Requester;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentRequest;
 use App\Models\Ticket;
-use App\Models\TicketComment;
 use App\Services\CommentService;
 
 class CommentController extends Controller
@@ -24,24 +23,21 @@ class CommentController extends Controller
     ) {
 
         abort_unless(
-            $ticket->assigned_to == auth()->id(),
+            $ticket->requester_id == auth()->id(),
             403
         );
 
         $this->service->create(
             // $ticket,
             // [
-            //     'user_id' => auth()->id(),
-            //     'comment' => $request->comment,
-            //     'is_internal' => $request->boolean(
-            //         'is_internal'
-            //     ),
+                // 'user_id' => auth()->id(),
+                // 'comment' => $request->comment,
+                // 'is_internal' => false,
+                ticket: $ticket,
+                comment: $request->comment,
+                userId: auth()->id(),
+                internal: false
             // ]
-
-            ticket: $ticket,
-            comment: $request->comment,
-            userId: auth()->id(),
-            internal: $request->boolean('is_internal')
         );
 
         return back()->with(
@@ -56,22 +52,19 @@ class CommentController extends Controller
      */
     public function destroy(
         Ticket $ticket,
-        TicketComment $comment
+        int $comment
     ) {
 
+        $comment = $this->service->find($comment);
+
+        abort_if(!$comment, 404);
+
         abort_unless(
-            $ticket->assigned_to == auth()->id(),
+            $comment->user_id == auth()->id(),
             403
         );
 
-        abort_unless(
-            $comment->ticket_id == $ticket->id,
-            404
-        );
-
-        $this->service->delete(
-            $comment
-        );
+        $this->service->delete($comment);
 
         return back()->with(
             'success',
@@ -79,5 +72,4 @@ class CommentController extends Controller
         );
 
     }
-
 }

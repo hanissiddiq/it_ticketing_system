@@ -15,6 +15,19 @@ use App\Repositories\Contracts\ITSupportTicketRepositoryInterface;
 use App\Repositories\Contracts\TicketHistoryRepositoryInterface;
 use App\Repositories\TicketHistoryRepository;
 
+use App\Repositories\Contracts\RequesterTicketRepositoryInterface;
+use App\Repositories\RequesterTicketRepository;
+
+use App\Repositories\Contracts\TicketCommentRepositoryInterface;
+use App\Repositories\TicketCommentRepository;
+
+use App\Repositories\Contracts\TicketAttachmentRepositoryInterface;
+use App\Repositories\TicketAttachmentRepository;
+
+use App\Models\TicketAttachment;
+use App\Policies\TicketAttachmentPolicy;
+use Illuminate\Support\Facades\Gate;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -40,6 +53,21 @@ class AppServiceProvider extends ServiceProvider
     TicketHistoryRepository::class
     );
 
+        $this->app->bind(
+    RequesterTicketRepositoryInterface::class,
+    RequesterTicketRepository::class
+    );
+
+    $this->app->bind(
+    TicketAttachmentRepositoryInterface::class,
+    TicketAttachmentRepository::class
+    );
+
+        $this->app->bind(
+    TicketCommentRepositoryInterface::class,
+    TicketCommentRepository::class
+    );
+
 
     }
 
@@ -49,5 +77,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        Gate::policy(
+        TicketAttachment::class,
+        TicketAttachmentPolicy::class
+    );
     }
 }

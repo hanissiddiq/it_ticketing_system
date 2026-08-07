@@ -129,6 +129,7 @@ class TicketController extends Controller
              'updatedBy',
              'assignments.assigner',
             'assignments.assignee',
+            'attachments.user','comments.user',
             'histories.user',
         ]);
 

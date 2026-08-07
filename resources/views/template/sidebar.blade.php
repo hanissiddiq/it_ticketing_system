@@ -111,6 +111,20 @@
             <div class="menu-title">Laporan</div>
           </a>
         </li>
+        {{-- Requester Ticket --}}
+        <li>
+          <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="material-icons-outlined">description</i>
+            </div>
+            <div class="menu-title">Requester Ticket</div>
+          </a>
+          <ul>
+            <li><a href="{{ route('requester.dashboard') }}"><i class="material-icons-outlined">arrow_right</i>Dashboard Requester</a>
+            </li>
+            <li><a href="{{ route('requester.tickets.index') }}"><i class="material-icons-outlined">arrow_right</i>My Tickets</a>
+            </li>
+          </ul>     
+        </li>
         {{-- IT Support Ticket --}}
         <li>
           <a href="javascript:;" class="has-arrow">

@@ -153,6 +153,7 @@ class RolePermissionSeeder extends Seeder
         ]);
 
         $user->givePermissionTo([
+            'dashboard.view',
             'ticket.create',
             'ticket.view',
             'ticket.comment',
