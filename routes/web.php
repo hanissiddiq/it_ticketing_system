@@ -10,6 +10,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TicketAssignmentController;
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+
 use App\Http\Controllers\ITSupport\DashboardController;
 use App\Http\Controllers\ITSupport\MyTicketController;
 use App\Http\Controllers\ITSupport\ProgressController;
@@ -70,6 +72,19 @@ Route::middleware(['auth'])->group(function () {
     });
 
 });
+
+Route::middleware(['auth','role:Admin'])->prefix('admin')->name('admin.')
+->group(function () {
+
+     /*
+        |--------------------------------------------------------------------------
+        | Dashboard Admin
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])
+            ->name('dashboard');
+        });
 
 Route::middleware(['auth','role:Helpdesk'])->prefix('helpdesk')->name('helpdesk.')
 ->group(function () {
