@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __('Ensure your account is using a long, random password to stay secure.') }}
+            {{ __('Pastikan akun Anda menggunakan kata sandi yang panjang dan acak agar tetap aman.') }}
         </p>
     </header>
 
@@ -13,11 +13,11 @@
         @csrf
         @method('put')
 
-        <div>
+        <!-- <div>
             <x-input-label for="update_password_current_password" :value="__('Current Password')" />
             <x-text-input id="update_password_current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" />
             <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
-        </div>
+        </div> -->
 
         <div>
             <x-input-label for="update_password_password" :value="__('New Password')" />
