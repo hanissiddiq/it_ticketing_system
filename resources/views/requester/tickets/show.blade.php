@@ -213,12 +213,22 @@
                             <div>
 
                                 <a
-                                    href="{{ route('requester.attachments.download',[$ticket,$attachment]) }}"
+                                    href="{{ route('requester.tickets.attachments.download',[$ticket,$attachment]) }}"
                                     class="btn btn-success btn-sm">
 
                                     Download
 
                                 </a>
+                                <!-- Tombol Hapus Diubah Menjadi Form -->
+                                <form action="{{ route('requester.tickets.attachments.destroy', [$ticket, $attachment]) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus attachment ini?')">
+                                        Hapus
+                                    </button>
+                                </form>
+
+
 
                             </div>
 

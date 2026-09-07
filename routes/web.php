@@ -9,8 +9,10 @@ use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TicketAssignmentController;
+use App\Http\Controllers\AttachmentController;
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Superadmin\DashboardController as SuperadminDashboardController;
 
 use App\Http\Controllers\ITSupport\DashboardController;
 use App\Http\Controllers\ITSupport\MyTicketController;
@@ -72,6 +74,20 @@ Route::middleware(['auth'])->group(function () {
     });
 
 });
+
+Route::middleware(['auth','role:Super Admin'])->prefix('superadmin')->name('superadmin.')
+->group(function () {
+
+     /*
+        |--------------------------------------------------------------------------
+        | Dashboard Superadmin
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/dashboard', [SuperadminDashboardController::class, 'index'])
+            ->name('dashboard');
+        });
+
 
 Route::middleware(['auth','role:Admin'])->prefix('admin')->name('admin.')
 ->group(function () {

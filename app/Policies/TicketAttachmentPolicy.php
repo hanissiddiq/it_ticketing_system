@@ -69,7 +69,7 @@ class TicketAttachmentPolicy
 
         }
 
-        if ($user->hasRole('Requester')) {
+        if ($user->hasRole('User')) {
 
             return $attachment->ticket->requester_id == $user->id
                 && $attachment->ticket->status == 'NEW';

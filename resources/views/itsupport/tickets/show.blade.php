@@ -337,13 +337,18 @@
                                 <small>{{ number_format($attachment->file_size/1024,2) }} KB</small>
                             </div>
 
+                            <div>
+
                             <a
-                                href="{{ route('itsupport.attachments.download',[$ticket,$attachment]) }}"
+                                href="{{ route('itsupport.tickets.attachments.download',[$ticket,$attachment]) }}"
                                 class="btn btn-success btn-sm">
 
                                 Download
 
                             </a>
+                            </div>
+
+
 
                         </div>
 

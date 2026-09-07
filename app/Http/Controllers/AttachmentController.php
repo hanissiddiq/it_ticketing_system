@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\TicketAttachment;
 use Illuminate\Support\Facades\Storage;
 use App\Services\TicketAttachmentService;
+use Illuminate\Support\Facades\Gate;
 
 class AttachmentController extends Controller
 {
@@ -28,10 +29,12 @@ class AttachmentController extends Controller
             404
         );
 
-        $this->authorize(
-            'download',
-            $attachment
-        );
+        // $this->authorize(
+        //     'download',
+        //     $attachment
+        // );
+        // 2. Ganti menjadi Gate::authorize
+        Gate::authorize('download', $attachment); 
 
         return Storage::disk('public')
             ->download(
@@ -54,10 +57,13 @@ class AttachmentController extends Controller
             404
         );
 
-        $this->authorize(
-            'delete',
-            $attachment
-        );
+        // $this->authorize(
+        //     'delete',
+        //     $attachment
+        // );
+
+        // 3. Ganti menjadi Gate::authorize
+        Gate::authorize('delete', $attachment); 
 
         $this->service->delete(
             $attachment
