@@ -13,6 +13,8 @@ use App\Http\Controllers\AttachmentController;
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Superadmin\DashboardController as SuperadminDashboardController;
+use App\Http\Controllers\ManagerIT\DashboardController as ManagerDashboardController;
+use App\Http\Controllers\Supervisor\DashboardController as SupervisorDashboardController;
 
 use App\Http\Controllers\ITSupport\DashboardController;
 use App\Http\Controllers\ITSupport\MyTicketController;
@@ -99,6 +101,32 @@ Route::middleware(['auth','role:Admin'])->prefix('admin')->name('admin.')
         */
 
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])
+            ->name('dashboard');
+        });
+
+Route::middleware(['auth','role:Manager IT'])->prefix('managerit')->name('managerit.')
+->group(function () {
+
+     /*
+        |--------------------------------------------------------------------------
+        | Dashboard ManagerIT
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/dashboard', [ManagerDashboardController::class, 'index'])
+            ->name('dashboard');
+        });
+
+Route::middleware(['auth','role:Supervisor'])->prefix('supervisor')->name('supervisor.')
+->group(function () {
+
+     /*
+        |--------------------------------------------------------------------------
+        | Dashboard Supervisor
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/dashboard', [SupervisorDashboardController::class, 'index'])
             ->name('dashboard');
         });
 

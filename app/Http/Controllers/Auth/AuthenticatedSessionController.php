@@ -33,8 +33,14 @@ class AuthenticatedSessionController extends Controller
     if ($user->hasRole('User')) {
         return redirect()->route('requester.dashboard');
     }
+    if ($user->hasRole('Manager IT')) {
+        return redirect()->route('managerit.dashboard');
+    }
+    if ($user->hasRole('Supervisor')) {
+        return redirect()->route('supervisor.dashboard');
+    }
 
-   if ($user->hasRole(['Admin', 'Supervisor', 'Manager IT'])) {
+   if ($user->hasRole(['Admin',  ])) {
     return redirect()->route('admin.dashboard');
     }
 

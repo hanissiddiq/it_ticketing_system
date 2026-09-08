@@ -98,4 +98,10 @@ class User extends Authenticatable
             TicketComment::class
         );
     }
+
+    public function tickets(): HasMany
+    {
+        // Hubungkan tabel users ke tabel tickets berdasarkan kolom assigned_to
+        return $this->hasMany(Ticket::class, 'assigned_to');
+    }
 }
