@@ -32,6 +32,7 @@ use App\Http\Controllers\Requester\CommentController as RequesterCommentControll
 use App\Http\Controllers\ITSupport\CommentController as ITSupportCommentController;
 
 use App\Http\Controllers\Report\ITSupportPerformanceController;
+use App\Http\Controllers\Report\IssueTrendController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -92,14 +93,12 @@ Route::middleware(['auth','role:Super Admin'])->prefix('superadmin')->name('supe
             ->name('dashboard');
         /*
         |--------------------------------------------------------------------------
-        | Laporan ManagerIT => Performance IT Support
+        | Laporan Superadmin => Performance IT Support
         |--------------------------------------------------------------------------
         */
 
-        Route::get(
-            '/reports/it-support',
-            [ITSupportPerformanceController::class, 'index']
-        )->name('reports.it-support');
+        Route::get('/reports/it-support',[ITSupportPerformanceController::class, 'index'])->name('reports.it-support');
+        Route::get('/reports/issue-trend',[IssueTrendController::class, 'index'])->name('reports.issue-trend');
         
         });
 
@@ -140,6 +139,11 @@ Route::middleware(['auth','role:Manager IT'])->prefix('managerit')->name('manage
             [ITSupportPerformanceController::class, 'index']
         )->name('reports.it-support');
 
+        Route::get(
+            '/reports/issue-trend',
+            [IssueTrendController::class, 'index']
+        )->name('reports.issue-trend');
+
         });
 
 Route::middleware(['auth','role:Supervisor'])->prefix('supervisor')->name('supervisor.')
@@ -161,6 +165,7 @@ Route::middleware(['auth','role:Supervisor'])->prefix('supervisor')->name('super
         */
 
         Route::get('/reports/it-support',[ITSupportPerformanceController::class, 'index'])->name('reports.it-support');
+        Route::get('/reports/issue-trend',[IssueTrendController::class, 'index'])->name('reports.issue-trend');
         
         });
 
