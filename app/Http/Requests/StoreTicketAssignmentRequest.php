@@ -23,6 +23,8 @@ class StoreTicketAssignmentRequest extends FormRequest
 
             ],
 
+            'due_at' => [ 'nullable', 'date', ],
+
             'notes' => [
 
                 'nullable',
@@ -42,6 +44,8 @@ class StoreTicketAssignmentRequest extends FormRequest
 
             'assigned_to' => 'Assigned To',
 
+            'due_at' => 'Due Date',
+
             'notes' => 'Notes',
 
         ];
@@ -56,6 +60,9 @@ class StoreTicketAssignmentRequest extends FormRequest
 
             'assigned_to.exists' =>
                 'Petugas yang dipilih tidak ditemukan.',
+
+            'due_at.required' => 'Due Date wajib diisi.', 
+            'due_at.date' => 'Format Due Date tidak valid.',
 
             'notes.max' =>
                 'Catatan maksimal 1000 karakter.',

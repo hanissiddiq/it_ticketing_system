@@ -174,6 +174,15 @@
 
         </div>
 
+        <div class="mb-3"> 
+            <label class="form-label"> Due Date </label> 
+                <input type="datetime-local" name="due_at" class="form-control @error('due_at') is-invalid @enderror" value="{{ old( 'due_at', $ticket->due_at ? $ticket->due_at->format('Y-m-d\TH:i') : '' ) }}" > 
+                    @error('due_at') 
+                    <div class="invalid-feedback"> {{ $message }} </div> 
+                    @enderror 
+            <div class="form-text"> Tentukan batas waktu penyelesaian ticket oleh IT Support. </div> 
+        </div>
+
         <div class="mb-3">
 
             <label class="form-label">

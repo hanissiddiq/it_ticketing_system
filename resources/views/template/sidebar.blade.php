@@ -146,7 +146,7 @@
               <a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>Laporan Periode</a>
             </li>
             <li>
-              <a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>Laporan Kinerja Agen / IT Support</a>
+              <a href="{{ route('superadmin.reports.it-support') }}"><i class="material-icons-outlined">arrow_right</i>Laporan Kinerja Agen / IT Support</a>
             </li>
             <li>
               <a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>Laporan Ringkasan Tren Masalah & Kategori (IT Issue Trend Analysis)</a>
@@ -368,7 +368,7 @@
               <a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>Laporan Periode</a>
             </li>
             <li>
-              <a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>Laporan Kinerja Agen / IT Support</a>
+              <a href="{{ route('managerit.reports.it-support') }}"><i class="material-icons-outlined">arrow_right</i>Laporan Kinerja Agen / IT Support</a>
             </li>
             <li>
               <a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>Laporan Ringkasan Tren Masalah & Kategori (IT Issue Trend Analysis)</a>
@@ -458,7 +458,7 @@
               <a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>Laporan Periode</a>
             </li>
             <li>
-              <a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>Laporan Kinerja Agen / IT Support</a>
+              <a href="{{ route('supervisor.reports.it-support') }}"><i class="material-icons-outlined">arrow_right</i>Laporan Kinerja Agen / IT Support</a>
             </li>
             <li>
               <a href="table-datatable.html"><i class="material-icons-outlined">arrow_right</i>Laporan Ringkasan Tren Masalah & Kategori (IT Issue Trend Analysis)</a>

@@ -71,7 +71,36 @@ class TicketAssignmentService
 
                 'status'      => 'ASSIGNED',
 
+                'due_at' => $data['due_at'],
+
             ]);
+
+            
+            /*
+            |--------------------------------------------------------------------------
+            | History Due Date
+            |--------------------------------------------------------------------------
+            // */
+
+            // if ($oldDueAt != $ticket->due_at) {
+
+            //     $this->historyService->log(
+
+            //         ticket: $ticket,
+
+            //         action: 'DUE_DATE_UPDATED',
+
+            //         field: 'due_at',
+
+            //         oldValue: $oldDueAt?->format('Y-m-d H:i:s'),
+
+            //         newValue: $ticket->due_at?->format('Y-m-d H:i:s'),
+
+            //         description: 'Due Date ticket ditetapkan/diperbarui.'
+
+            //     );
+            // }
+      
 
              /*
             |--------------------------------------------------------------------------

@@ -32,7 +32,7 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <p class="mb-1 text-secondary small fw-bold text-uppercase">Total Antrean Aktif</p>
-                            <h3 class="mb-0 fw-bold text-dark">{{ $data['activeTicket'] }}</h3>
+                            <h3 class="mb-0 fw-bold text-secondary">{{ $data['activeTicket'] }}</h3>
                             <small class="text-secondary">Total beban kerja tim</small>
                         </div>
                         <div class="wh-48 d-flex bg-primary text-primary bg-opacity-10 align-items-center justify-content-center rounded-circle">

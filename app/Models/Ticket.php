@@ -41,6 +41,7 @@ class Ticket extends Model
         'resolved_at',
 
         'closed_at',
+        'updated_by',
 
     ];
 

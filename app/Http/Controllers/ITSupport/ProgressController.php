@@ -26,11 +26,34 @@ class ProgressController extends Controller
 
         ]);
 
-        $ticket->update([
+        /*
+        |--------------------------------------------------------------------------
+        | Update berdasarkan status
+        |--------------------------------------------------------------------------
+        */
 
-            'status' => $request->status
+        if ($request->status === 'RESOLVED') {
 
-        ]);
+            $ticket->update([
+                'status' => 'RESOLVED',
+                'resolved_at' => now(),
+                'updated_by' => auth()->id(),
+            ]);
+
+        } elseif ($request->status === 'IN_PROGRESS') {
+
+            $ticket->update([
+                'status' => 'IN_PROGRESS',
+                'updated_by' => auth()->id(),
+            ]);
+
+        } elseif ($request->status === 'PENDING') {
+
+            $ticket->update([
+                'status' => 'PENDING',
+                'updated_by' => auth()->id(),
+            ]);
+        }
 
         return back()->with(
             'success',

@@ -31,6 +31,8 @@ use App\Http\Controllers\Requester\CommentController as RequesterCommentControll
 
 use App\Http\Controllers\ITSupport\CommentController as ITSupportCommentController;
 
+use App\Http\Controllers\Report\ITSupportPerformanceController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -88,6 +90,17 @@ Route::middleware(['auth','role:Super Admin'])->prefix('superadmin')->name('supe
 
         Route::get('/dashboard', [SuperadminDashboardController::class, 'index'])
             ->name('dashboard');
+        /*
+        |--------------------------------------------------------------------------
+        | Laporan ManagerIT => Performance IT Support
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get(
+            '/reports/it-support',
+            [ITSupportPerformanceController::class, 'index']
+        )->name('reports.it-support');
+        
         });
 
 
@@ -115,6 +128,18 @@ Route::middleware(['auth','role:Manager IT'])->prefix('managerit')->name('manage
 
         Route::get('/dashboard', [ManagerDashboardController::class, 'index'])
             ->name('dashboard');
+
+         /*
+        |--------------------------------------------------------------------------
+        | Laporan ManagerIT => Performance IT Support
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get(
+            '/reports/it-support',
+            [ITSupportPerformanceController::class, 'index']
+        )->name('reports.it-support');
+
         });
 
 Route::middleware(['auth','role:Supervisor'])->prefix('supervisor')->name('supervisor.')
@@ -128,6 +153,15 @@ Route::middleware(['auth','role:Supervisor'])->prefix('supervisor')->name('super
 
         Route::get('/dashboard', [SupervisorDashboardController::class, 'index'])
             ->name('dashboard');
+
+         /*
+        |--------------------------------------------------------------------------
+        | Laporan Supervisor => Performance IT Support
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/reports/it-support',[ITSupportPerformanceController::class, 'index'])->name('reports.it-support');
+        
         });
 
 Route::middleware(['auth','role:Helpdesk'])->prefix('helpdesk')->name('helpdesk.')
