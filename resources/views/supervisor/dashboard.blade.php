@@ -198,7 +198,7 @@
 
 @push('scripts')
 <script src="{{ asset('assets/plugins/apexchart/apexcharts.min.js') }}"></script>
-<script>
+
     <script>
     window.addEventListener("load", function () {
         
